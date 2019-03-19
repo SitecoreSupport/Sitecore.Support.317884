@@ -12,7 +12,7 @@ using Sitecore.WFFM.Abstractions.Mail;
 using Sitecore.WFFM.Abstractions.Shared;
 using Sitecore.WFFM.Abstractions.Utils;
 
-namespace Sitecore.Forms.Core.Pipelines
+namespace Sitecore.Support.Forms.Core.Pipelines
 {
   /// <summary>
   /// Processors for Process message
@@ -92,7 +92,7 @@ namespace Sitecore.Forms.Core.Pipelines
           }
           if (Regex.IsMatch(replaced, "\\[<label id=\"" + item.ID + "\" renderfield=\"Value\">[^<]+?</label>]"))
           {
-            replaced = Regex.Replace(replaced, "\\[<label id=\"" + item.ID + "\" renderfield=\"Value\">[^<]+?</label>]", field.Value);
+            replaced = Regex.Replace(replaced, "\\[<label id=\"" + item.ID + "\" renderfield=\"Value\">[^<]+?</label>]", field.Value.Replace("</item><item>", ", "));
           }
           if (Regex.IsMatch(replaced, "\\[<label id=\"" + item.ID + "\" renderfield=\"Text\">[^<]+?</label>]"))
           {
